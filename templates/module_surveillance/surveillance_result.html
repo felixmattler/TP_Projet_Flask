@@ -1,0 +1,48 @@
+{% extends "main_template.html" %}
+{% block content %}    
+        
+        Équipement à interroger
+
+        <form action="/surveillance/result" method="POST">
+            <label for="form_ip">Adresse IP :</label><br>
+            <input type="text" id="form_ip" name="form_ip" placeholder="0.0.0.0"><br>
+                        
+            <label for="form_oid">OID :</label><br>
+            <input type="text" id="form_oid" name="form_oid" placeholder="3.1.2.1.1, 3.1.2.1.2.3, ...">
+
+            <input type="submit" value="Envoyer">
+        </form>
+
+        <table id="snmp_table">
+            {% for result in snmp_result %}
+                    <tr>
+                        <td>{{ result }}</td>
+                    </tr>
+            {% endfor %}
+        </table>
+
+        <div style="height:1000px; width:1000px">
+            <img src="{{ graph }}"/>
+        </div>
+        
+            <h2>Liste des équipements</h2>
+            
+            <table id="eqpt_table">
+                <tr>
+                    <td>Name</td>
+                    <td>Adresse IP</td>
+                    <td>OID</td>
+                </tr>
+            {% for eqpt in eqpt_liste %}
+                <tr>
+                    <td>{{ eqpt.name }}</td>
+                    <td>{{ eqpt.ip }}</td>
+                    <td>{% for item in eqpt.oids %}
+                            {{ item.oid }}<br>
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+            
+{% endblock %}

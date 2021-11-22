@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Projet dev supervision</title>
+        <link  href="./static/style.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+        
+        <h1><a href="/">La page principale de notre appli de supervision</a></h1>
+
+        <nav>
+            <ul>
+                <li class="dropdown_menu"><a href="#">Module de configuration</a>
+                <ul class="dropdown">
+                    <li><a href="/config/add">Ajouter un équipement</a></li>
+                    <li><a href="/config/del">Supprimer un équipement</a></li>
+                    <li><a href="/config/mod">Modifier un équipement</a></li>
+                </ul>
+                </li>
+                <li><a href="/surveillance">Module de surveillance</a>
+                </li>
+                <li><a href="/logs">Module de logs</a></li>
+            </ul>
+        </nav>
+        
+        {% block content %}
+            <h2>Liste des équipements</h2>
+            
+            <table id="eqpt_table">
+                <tr>
+                    <td>Names</td>
+                    <td>Adresse IP</td>
+                    <td>OID</td>
+                </tr>
+            {% for eqpt in eqpt_liste %}
+                <tr>
+                    <td>{{ eqpt.name }}</td>
+                    <td>{{ eqpt.ip }}</td>
+                    <td>{% for item in eqpt.oids %}
+                            {{ item.oid }}<br>
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+        {% endblock %}
+
+    </body>
+</html>

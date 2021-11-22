@@ -1,0 +1,33 @@
+{% extends "main_template.html" %}
+{% block content %}
+
+        <h2>Module de configuration</h2>
+
+        <p>
+            Modifier un équipement
+            
+            <form action="/config/mod/ok" method="POST">
+                <label for="form_name">Nom de l'équipement :</label><br>
+                <select name="form_name" id="form_name">
+                    {% for equipement in eqpt_liste %}
+                    <option value="{{ equipement.name }}">{{ equipement.name }}</option>
+                    {% endfor %}
+                </select> 
+                </br>
+
+
+                <label for="form_field">Champ à modifier :</label><br>
+                <select name="form_field" id="form_field">
+                    <option value="name">name</option>
+                    <option value="ip">ip</option>
+                    <option value="oid">oids</option>
+                </select> </br>
+
+                <label for="form_value">Nouvelle valeur :</label><br>
+                <input type="text" id="form_value" name="form_value"><br>
+
+                <input type="submit" value="Envoyer">
+            </form>
+        </p>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "main_template.html" %}
+{% block content %}
+
+<h2>Module de configuration</h2>
+
+        <p>
+            Supprimer un équipement
+            
+            <form action="/config/del/ok" method="POST">
+                <label>Champ à modifier :</label><br>
+               
+                <select name="form_name" id="form_name">
+                    {% for equipement in eqpt_liste %}
+                    <option value="{{ equipement.name }}">{{ equipement.name }}</option>
+                    {% endfor %}
+                </select> 
+                </br>
+                
+                <input type="submit" value="Envoyer">
+            </form>
+        </p>
+
+{% endblock %}

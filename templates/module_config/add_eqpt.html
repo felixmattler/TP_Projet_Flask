@@ -1,0 +1,21 @@
+{% extends "main_template.html" %}
+{% block content %}
+
+
+<p>
+    Ajouter un équipement
+    
+    <form action="/config/add/ok" method="POST">
+        <label for="form_name">Nom de l'équipement :</label><br>
+        <input type="text" id="form_name" name="form_name" placeholder="routeur01"><br>
+        
+        <label for="form_ip">Adresse IP :</label><br>
+        <input type="text" id="form_ip" name="form_ip" placeholder="192.168.1.254"><br>
+        
+        <label for="form_oid">OID :</label><br>
+        <input type="text" id="form_oid" name="form_oid" placeholder="3.1.2.1.1, 3.1.2.1.2.3, ...">
+
+        <input type="submit" value="Envoyer">
+    </form>
+</p>
+{% endblock %}

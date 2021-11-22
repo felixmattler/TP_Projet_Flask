@@ -1,0 +1,13 @@
+{% extends "main_template.html" %}
+{% block content %}
+
+        <h2>Module de configuration</h2>
+
+        <p>
+            Equipement modifié !</br>
+            Nom : {{ eqpt.render_name }} </br>
+            Champ : {{ eqpt.render_field }} </br>
+            Nouvelle valeur : {{ eqpt.render_value }}
+        </p>
+
+{% endblock %}

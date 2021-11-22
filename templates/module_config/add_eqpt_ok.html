@@ -1,0 +1,14 @@
+{% extends "main_template.html" %}
+{% block content %}
+
+        
+        <h2>Module de configuration</h2>
+
+        <p>
+            Equipement ajouté !</br>
+            Nom : {{ eqpt.render_name }} </br>
+            Adresse IP : {{ eqpt.render_ip }} </br>
+            OID : {{ eqpt.render_oid }}
+        </p>
+
+{% endblock %}
